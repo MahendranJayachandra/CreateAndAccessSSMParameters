@@ -5,4 +5,4 @@
       - name: access aws ssm parameters
         ansible.builtin.debug:
           msg: "{{ lookup('amazon.aws.aws_ssm', 'demo1') }}"
-          region: us-east-1
+          aws_region: us-east-1
