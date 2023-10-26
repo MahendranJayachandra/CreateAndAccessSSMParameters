@@ -24,7 +24,7 @@ resource "aws_instance" "web" {
   }
 }
 
-  resource "aws_route53_record" "www" {
+resource "aws_route53_record" "www" {
   zone_id = aws_route53_zone.primary.zone_id
   name    = "frontend-dev.learnskill.fun"
   type    = "A"
