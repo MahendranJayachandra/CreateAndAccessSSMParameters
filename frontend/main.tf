@@ -1,6 +1,6 @@
 data "aws_ami" "devops" {
   most_recent = true
-  name_regex       = "devops-practice"
+  name_regex       = "DevOps-practice"
   owners = ["973714476881"] # Canonical
 }
 
