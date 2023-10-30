@@ -1,10 +1,3 @@
-data "aws_ami" "devops" {
-  #executable_users = [973714476881]
-  most_recent = true
-  name_regex       = "DevOps-Practice"
-  owners = ["973714476881"] # Canonical
-}
-
 data "aws_ami" "example" {
  # executable_users = ["self"]
   most_recent      = true
