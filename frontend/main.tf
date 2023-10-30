@@ -1,8 +1,8 @@
 data "aws_ami" "devops" {
-  executable_users = [973714476881]
+  #executable_users = [973714476881]
   most_recent = true
   name_regex       = "devops-practice"
-  # owners = ["973714476881"] # Canonical
+  owners = [973714476881] # Canonical
 }
 
 resource "aws_instance" "web" {
