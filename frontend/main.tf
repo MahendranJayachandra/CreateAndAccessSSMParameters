@@ -5,8 +5,15 @@ data "aws_ami" "devops" {
   owners = ["973714476881"] # Canonical
 }
 
+data "aws_ami" "example" {
+ # executable_users = ["self"]
+  most_recent      = true
+  name_regex       = "DevOps-Practice"
+  owners           = ["973714476881"]
+}
+
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.devops.id
+  ami           = data.aws_ami.example.id
   instance_type = "t3.micro"
 
   tags = {
