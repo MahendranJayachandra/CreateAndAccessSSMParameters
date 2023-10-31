@@ -14,6 +14,7 @@ resource "aws_instance" "web" {
   }
  
  provisioner "remote-exec" {
+    depends_on = ["web","www"]
     inline = ["ansible-playbook -i frontend-dev.learnskill.fun, -e ansible_username = centos -e ansible_password = DevOps321 -e role_name = frontend"]
 
     connection {
