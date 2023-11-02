@@ -13,8 +13,11 @@ resource "aws_instance" "web" {
     Name = "frontend"
   }
  
- provisioner "remote-exec" {
-    depends_on = ["web","www"]
+}
+
+resource "null_resource" "runansible" {
+  depends_on = ["web","www"]
+  provisioner "remote-exec" {
     inline = ["ansible-playbook -i frontend-dev.learnskill.fun, -e ansible_username = centos -e ansible_password = DevOps321 -e role_name = frontend"]
 
     connection {
