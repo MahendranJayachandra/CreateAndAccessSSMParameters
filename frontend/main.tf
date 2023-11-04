@@ -18,7 +18,10 @@ resource "aws_instance" "web" {
 resource "null_resource" "runansible" {
   depends_on = [aws_instance.web, aws_route53_record.www]
   provisioner "remote-exec" {
-    inline = ["ansible-playbook -i frontend-dev.learnskill.fun, -e ansible_username = centos -e ansible_password = DevOps321 -e role_name = frontend"]
+    inline = [
+      "sudo awsauto ansible",
+      "ansible-pull -U https://github.com/MahendranJayachandra/learn-ansible -e role_name = frontend"
+      ]
 
     connection {
       host        = aws_instance.web.public_ip
