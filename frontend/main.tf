@@ -20,7 +20,7 @@ resource "null_resource" "runansible" {
   provisioner "remote-exec" {
     inline = [
       "sudo awsauto ansible",
-      "ansible-pull -U https://github.com/MahendranJayachandra/learn-ansible -e role_name = frontend"
+      "ansible-pull -i localhost, -U https://github.com/MahendranJayachandra/learn-ansible/roboshop.yml -e role_name = frontend"
       ]
 
     connection {
