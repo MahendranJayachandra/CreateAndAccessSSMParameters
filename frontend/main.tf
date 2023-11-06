@@ -24,7 +24,7 @@ resource "null_resource" "runansible" {
       ]
 
     connection {
-      host        = aws_instance.web.public_ip
+      host        = resource.aws_instance.web.public_ip
       type        = "ssh"
       user        = "centos"
       password = "DevOps321"
