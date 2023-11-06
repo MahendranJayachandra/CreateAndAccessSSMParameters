@@ -32,7 +32,7 @@ resource "aws_security_group" "allow_all" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.example.id
   instance_type = "t3.micro"
-  security_groups = [resource.aws_security_group.allow_all.id]
+  security_groups = [resource.aws_security_group.allow_all.name]
 
   tags = {
     Name = "frontend"
