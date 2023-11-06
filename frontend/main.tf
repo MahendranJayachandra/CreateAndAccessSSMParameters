@@ -5,9 +5,34 @@ data "aws_ami" "example" {
   owners           = ["973714476881"]
 }
 
+resource "aws_security_group" "allow_all" {
+  name        = "allow_all"
+  description = "Allow ssh inbound traffic"
+
+  ingress {
+    description      = "ssh"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "ssh"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "Allow_All"
+  }
+}
+
 resource "aws_instance" "web" {
   ami           = data.aws_ami.example.id
   instance_type = "t3.micro"
+  security_groups = [resource.aws_security_group.allow_all]
 
   tags = {
     Name = "frontend"
