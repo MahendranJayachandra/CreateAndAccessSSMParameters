@@ -34,7 +34,7 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
   security_groups = [resource.aws_security_group.allow_all.name]
   #iam_instance_profile = "arn:aws:iam::322657627157:role/AccessSSMParameters"
-  iam_instance_profile = "AccessSSMParameters"
+  iam_instance_profile = "attachrole"
 
   tags = {
     Name = "frontend"
@@ -65,4 +65,13 @@ resource "aws_route53_record" "www" {
   type    = "A"
   ttl     = 30
   records = [aws_instance.web.private_ip]
+}
+
+resource "aws_iam_instance_profile" "SSMParam_profile" {
+  name = "attachrole"
+  role = "${aws_iam_role.example.name}"
+}
+
+data "aws_iam_role" "example" {
+  name = "AccessSSMParameters"
 }
