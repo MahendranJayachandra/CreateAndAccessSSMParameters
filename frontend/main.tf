@@ -34,7 +34,7 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
   security_groups = [resource.aws_security_group.allow_all.name]
   #iam_instance_profile = "arn:aws:iam::322657627157:role/AccessSSMParameters"
-  iam_instance_profile = "attachrole"
+  iam_instance_profile = "${aws_iam_instance_profile.SSMParam_profile.name}"
 
   tags = {
     Name = "frontend"
