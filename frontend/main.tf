@@ -69,7 +69,7 @@ resource "aws_route53_record" "www" {
 
 resource "aws_iam_instance_profile" "SSMParam_profile" {
   name = "attachrole"
-  role = "${aws_iam_role.example.name}"
+  role = "${data.aws_iam_role.example.name}"
 }
 
 data "aws_iam_role" "example" {
