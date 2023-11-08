@@ -33,7 +33,9 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.example.id
   instance_type = "t3.micro"
   security_groups = [resource.aws_security_group.allow_all.name]
-  iam_instance_profile = "arn:aws:iam::322657627157:role/AccessSSMParameters"
+  #iam_instance_profile = "arn:aws:iam::322657627157:role/AccessSSMParameters"
+  iam_instance_profile = "AccessSSMParameters"
+
   tags = {
     Name = "frontend"
   }
