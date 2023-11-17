@@ -73,5 +73,5 @@ resource "aws_iam_instance_profile" "SSMParam_profile" {
 }
 
 data "aws_iam_role" "example" {
-  name = "AccessSSMParameters"
+  name = "FetchSSMParams"
 }
